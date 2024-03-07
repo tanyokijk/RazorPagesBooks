@@ -1,0 +1,144 @@
+﻿@page "/"
+@model RazorPagesBooks.Pages.BooksModel
+
+    <form method="get" class="search-form">
+        <input type="text" id="searchQuery" name="text" placeholder="Шукати фільм" />
+        <button type="submit" class="search-button"></button>
+    </form>
+
+
+<a href="/" class="crud">Всі книги</a>
+<a href="AddBook" class="crud">Додати</a>
+<a href="UpdateBook" class="crud">Редагувати</a>
+<a href="DeleteBook" class="crud">Видалити</a>
+
+@if (!string.IsNullOrEmpty(TempData["Message"]?.ToString()))
+{
+    <p>@TempData["Message"]</p>
+}
+
+<div class="gallery">
+    @foreach (var book in Model.Books)
+    {
+        <div class="book-card">
+            @if (!string.IsNullOrEmpty(book.Photo))
+            {
+                <a href="Details/@book.Id"><img src="@book.Photo" alt="@book.Name" class="book-poster" /></a>
+            }
+            <div class="book-details">
+                <a href="Details/@book.Id"><h2>@book.Name</h2></a>
+            </div>
+        </div>
+    }
+</div>
+
+
+<style>
+    body
+    {
+        background-color: #3E3232;
+    }
+
+    .gallery {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        margin-left: 80px;
+    }
+
+
+    .book-card {
+        border: none;
+        margin: 10px;
+        padding: 10px;
+        text-align: center;
+        width: 200px;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+    }
+
+
+    .book-details {
+        margin-top: 10px;
+        text-align: center;
+    }
+
+    .book-poster {
+        width: 100%;
+        height: auto;
+    }
+
+
+h2,h4,p
+{
+color : whitesmoke
+}
+
+    a {
+        text-decoration: none;
+        color: whitesmoke;
+    }
+
+    .book-details h2:hover {
+        color: #FFD1E3;
+    }
+
+    .search-form {
+        position: relative;
+        width: 300px;
+        margin: 0 auto;
+    }
+         input,  button {
+            outline: none;
+            background: transparent;
+        }
+
+         input {
+            width: 100%;
+            height: 42px;
+            padding-left: 15px;
+            border: 3px solid #F9F0DA;
+            color : whitesmoke;
+        }
+
+    .search-button {
+            border: none;
+            height: 42px;
+            width: 42px;
+            position: absolute;
+            top: 0;
+            right: 0;
+            cursor: pointer;
+        }
+
+        .search-button:before {
+                content: "🔍";
+                font-size: 16px;
+                color: black;
+            }
+
+         input:focus {
+            border-color: #311c24
+        }
+
+
+
+    .crud {
+        height: 50px;
+        width: 50px;
+        position: absolute;
+        top: 10px;
+        cursor: pointer;
+        font-size: 25px;
+        color: whitesmoke;
+        border: 3px solid #F9F0DA;
+        text-align: center;
+        position: relative;
+        margin: 0 auto;
+        padding-right: 160px; /* Розширюємо правий край форми, щоб уникнути накладання кнопки */
+        margin-bottom: 60px;
+        text-align: center;
+        margin: 0 auto;
+    }
+
+</style>
+

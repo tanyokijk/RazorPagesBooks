@@ -1,0 +1,123 @@
+﻿@page "/DeleteBook"
+@model RazorPagesBooks.Pages.DeleteBookModel
+
+<a href="/">Н<br>а<br>з<br>а<br>д</a>
+
+<h2>ВИДАЛИТИ КНИЖКУ</h2>
+
+<form method="get">
+    <label>
+        Id:
+        <select name="id">
+            @foreach (var book in Model.AllBooks)
+            {
+                <option value="@book.Id">@book.Id</option>
+            }
+        </select>
+    </label>
+    <br>
+    <button type="submit" class="delete-button">Видалити книжку</button>
+
+</form>
+@if (!string.IsNullOrEmpty(TempData["MessageDelete"]?.ToString()))
+{
+    <p>@TempData["MessageDelete"]</p>
+}
+
+<style>
+    h2
+    {
+        text-align: center;
+        color: whitesmoke;
+    }
+    form
+    {
+        text-align: center;
+        color: whitesmoke;
+    }
+
+    p {
+        font-size: 25px;
+        text-align: center;
+        color: whitesmoke;
+    }
+
+    a {
+        display: block;
+        position: fixed;
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%);
+        width: 60px;
+        padding: 10px;
+        font-size: 45px;
+        color: gray;
+        text-align: center;
+        text-decoration: none;
+        line-height: 1.5em;
+    }
+
+        a:hover {
+            text-shadow: 0 15px 30px rgba(0, 0, 0, 0.8);
+            color: #A87C7C;
+        }
+
+    body {
+        background-color: #3E3232;
+    }
+
+    select {
+        background: none;
+        border: none;
+        border-bottom: 1px solid white;
+        font-size: 25px;
+        color: whitesmoke;
+    }
+
+        select option {
+            color: black;
+        }
+
+            select option:checked {
+                color: whitesmoke;
+            }
+
+    div {
+        display: flex;
+        width: 30%;
+
+        flex-wrap: wrap;
+        vertical-align: top;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+        margin: auto;
+    }
+
+    input {
+        background: none;
+        border: none;
+        border-bottom: 1px solid white;
+        font-size: 25px;
+        color: whitesmoke;
+    }
+
+        input:focus {
+            border-bottom: 2px solid #A87C7C;
+            background: none;
+            border: none;
+        }
+    label
+    {
+        font-size: 25px;
+        margin : 10px;
+    }
+    button {
+        font-size: 25px;
+        margin: 10px;
+        border-radius: 10px;
+        background-color: #7E6363;
+        color: whitesmoke;
+        border : none;
+    }
+</style>

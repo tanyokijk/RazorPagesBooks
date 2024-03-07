@@ -1,0 +1,100 @@
+﻿@page "/Details/{id:int}"
+@model RazorPagesBooks.Pages.DetailsModel
+
+<a href="/">Н<br>а<br>з<br>а<br>д</a>
+
+<div class="book-card">
+    @if (Model.Book.Photo != null)
+    {
+        <img src="@Model.Book.Photo" alt="@Model.Book.Name">
+    }
+    <div class="book-description">
+
+        <h2>@Model.Book.Name</h2>
+        <p><b>Автор</b>:&nbsp;@Model.Book.Author</p>
+
+        <p><b>Видавництво</b>:&nbsp;@Model.Book.Publisher.Name</p>
+        <p><b>Рік видання</b>:&nbsp;@Model.Book.Year</p>
+        <p><b>Жанр:</b>&nbsp;@string.Join(", ", Model.Book.Styles.Select(style => style.Name))</p>
+        <br>
+    </div>
+</div>
+
+
+<style>
+    h2 {
+        font-size: 50px;
+        color: whitesmoke;
+    }
+
+    p {
+        font-size: 20px;
+        color: whitesmoke;
+    }
+
+    img {
+        width: 20%;
+        height: auto;
+    }
+
+    a {
+        display: block;
+        position: fixed;
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%);
+        width: 60px;
+        padding: 10px;
+        font-size: 45px;
+        color: gray;
+        text-align: center;
+        text-decoration: none;
+        line-height: 1.5em;
+    }
+
+        a:hover {
+            text-shadow: 0 15px 30px rgba(0, 0, 0, 0.8);
+            color: #A87C7C;
+        }
+
+
+
+    .book-card {
+        display: flex;
+        align-items: flex-start;
+        position: fixed;
+        left: 80px;
+        top: 20px;
+        bottom: 0;
+    }
+
+    .book-description {
+        margin-right: 200px;
+        margin-left: 40px;
+    }
+
+    .session-details {
+        background-color: #7E6363;
+        border-radius: 10px;
+        list-style-type: none;
+        padding: 10px;
+        margin-bottom: 10px;
+        text-align: center;
+        display: inline-block;
+        width: 120px;
+        height: 40px;
+        line-height: 20px;
+    }
+
+        .session-details p {
+            margin: 0;
+            font-size: 25px;
+        }
+
+    body {
+        background-color: #3E3232;
+    }
+
+</style>
+
+
